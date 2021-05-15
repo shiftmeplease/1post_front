@@ -1,17 +1,67 @@
 <script>
-  export let _id;
-  export let body;
-  export let date;
+  // import { onMount } from "svelte";
+  import { slide } from "../utils/anim.js";
+
+  let autoHeight = false;
+  const slideObj = slide();
+  const { slideFn } = slideObj;
+  slideObj.loopBegin = () => {
+    console.log("begin");
+    autoHeight = false;
+  };
+
+  slideObj.loopComplete = () => {
+    console.log("comp");
+    autoHeight = true;
+  };
+
+  export let post = {};
+  let {
+    _id,
+    value,
+    country = "AQ",
+    date = new Date(),
+    animation = false,
+    viewPost = false,
+  } = post;
+  // let animated = !!animation;
+
+  country = country.toLowerCase();
+  $: {
+    value = post.value;
+    if (!_id) date = new Date();
+  }
 </script>
 
-<div class="post">
-  <div class="desc">
-    <div>
-      <a href="/#">#{_id}</a>
-      {new Date(date).toUTCString().split(",")[1]}
+<div
+  class:animation
+  class:viewPost
+  transition:slideFn={animation}
+  class:autoHeight
+>
+  <div class="post">
+    <div class="desc">
+      <div>
+        {#if _id}<a class="idHref" href="/#">#{_id}</a>
+        {:else}
+          <span class="idHref" href="/#">#???</span>
+        {/if}
+        <span class="date"
+          >{new Date(date)
+            .toUTCString()
+            .split(",")[1]
+            .replace(" GMT", "")}</span
+        >
+        {#if country}
+          <img
+            class="flag"
+            src={`https://www.countryflags.io/${country}/flat/32.png`}
+            alt={country}
+          />{/if}
+      </div>
     </div>
+    <div class="postBody">{@html value}</div>
   </div>
-  <div class="postBody">{body}</div>
 </div>
 
 <style>
@@ -20,9 +70,49 @@
     flex-grow: 1;
     display: flex;
     background-color: #d8d8d8;
-    padding: 1em;
     flex-direction: column;
     border: 0.1em solid #d1d1d1;
+    /* transition: 0.2s all ease-in-out; */
+
+    /* TODO make ... to view post */
+    overflow: hidden;
+    padding: 1em;
+
+    /* transition: all 0.5s ease-in-out; */
+    /* height: 0; */
+    /* padding: 0; */
+  }
+  /* .post :global(p) {
+    margin: 0;
+  } */
+  .animation {
+    /* transform: scaleY(0); */
+    /* transform-origin: top; */
+    /* transition: transform 0.25s ease; */
+    overflow: hidden;
+    /* transition: all 5s ease-in-out; */
+    /* max-height: 0px; */
+    z-index: -999;
+  }
+  .viewPost {
+    /* overflow: auto; */
+  }
+  .autoHeight {
+    height: auto !important;
+    overflow: auto;
+  }
+  .flag {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    flex-grow: 0;
+    width: 32px;
+    height: 32px;
+  }
+  .post:hover {
+    background-color: #eeeeee;
   }
   .postBody {
     font-size: 1.2em;

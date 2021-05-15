@@ -18,7 +18,7 @@
   }
   .logo {
     font-size: 2em;
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Titillium Web Semibold", sans-serif;
     text-decoration: none;
     color: #ebebeb;
     line-height: 0.9em;

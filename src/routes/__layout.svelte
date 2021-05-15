@@ -8,3 +8,4 @@
 
 <Header />
 <slot />
+<div>footer</div>

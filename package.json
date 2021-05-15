@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
+    "dev:expose": "svelte-kit dev --host \"192.168.0.2\"",
     "build": "svelte-kit build",
     "start": "svelte-kit start",
     "lint": "eslint --ignore-path .gitignore ."
@@ -17,6 +18,11 @@
   },
   "type": "module",
   "dependencies": {
-    "svelte-loading-spinners": "^0.1.4"
+    "animejs": "^3.2.1",
+    "dompurify": "^2.2.8",
+    "markdown-it": "^12.0.6",
+    "marked": "^2.0.3",
+    "svelte-loading-spinners": "^0.1.4",
+    "svelte-scrollto": "^0.2.0"
   }
 }

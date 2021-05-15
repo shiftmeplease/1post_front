@@ -3,7 +3,17 @@
 		'Open Sans', 'Helvetica Neue', sans-serif;
 } */
 
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap"); */
+
+/* @font-face {
+  font-family: "Titillium Web Semibold";
+  src: url("TitilliumWeb-SemiBold.eot");
+  src: url("TitilliumWeb-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("TitilliumWeb-SemiBold.woff") format("woff"),
+    url("TitilliumWeb-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} */
 
 body {
   margin: 0px;
