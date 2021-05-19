@@ -3,7 +3,7 @@ import db from "$lib/database";
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-export async function post(request) {
+export async function get(request) {
   const { slug } = request;
 
   const article = await db.get(slug);

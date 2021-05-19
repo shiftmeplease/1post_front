@@ -6,12 +6,10 @@
   const slideObj = slide();
   const { slideFn } = slideObj;
   slideObj.loopBegin = () => {
-    console.log("begin");
     autoHeight = false;
   };
 
   slideObj.loopComplete = () => {
-    console.log("comp");
     autoHeight = true;
   };
 
@@ -24,7 +22,6 @@
     animation = false,
     viewPost = false,
   } = post;
-  // let animated = !!animation;
 
   country = country.toLowerCase();
   $: {
@@ -94,9 +91,10 @@
     /* max-height: 0px; */
     z-index: -999;
   }
-  .viewPost {
-    /* overflow: auto; */
-  }
+  /* .viewPost {
+    /* overflow: auto; 
+  }*/
+
   .autoHeight {
     height: auto !important;
     overflow: auto;

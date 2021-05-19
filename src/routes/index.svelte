@@ -1,8 +1,18 @@
 <script>
   import PostList from "../components/PostList.svelte";
   import CreatePost from "../components/CreatePost.svelte";
-  import { postsStore } from "../stores/posts.js";
+  import { onDestroy } from "svelte";
   import { scrollStore } from "../stores/scroll.js";
+  import { postsStore } from "../stores/posts.js";
+
+  let expanded = false;
+  const unsub = scrollStore.subscribe(({ state }) => {
+    expanded = state === "down" ? true : false;
+  });
+
+  onDestroy(() => {
+    unsub();
+  });
 </script>
 
 <svelte:head>
@@ -18,10 +28,11 @@
   <CreatePost
     on:postCreated={({ detail: post }) => {
       postsStore.add(post);
-      scrollStore.set(true);
+      scrollStore.setProp("scrollToTop", true);
     }}
+    {expanded}
   />
-  <PostList pageSize={10} triggerNum={3} />
+  <PostList pageSize={10} triggerNum={5} {expanded} />
 </main>
 
 <!-- TODO https://preview.npmjs.com/package/marked -->

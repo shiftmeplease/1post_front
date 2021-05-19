@@ -1,20 +1,54 @@
-<header>
-  <a href="/" class="logo">1PO.ST</a>
+<script>
+  import { scrollStore } from "../stores/scroll.js";
+  import { onDestroy } from "svelte";
+  import CreatePost from "./CreatePost.svelte";
 
-  <span class="description"> Post anything. Once.</span>
+  let hidden = false;
+
+  const unsub = scrollStore.subscribe(({ state }) => {
+    hidden = state === "down" ? true : false;
+  });
+
+  onDestroy(() => {
+    unsub();
+  });
+</script>
+
+<header class:hidden>
+  <div class="header">
+    <a href="/" class="logo">1PO.ST</a>
+
+    <span class="description"> Post anything. Once.</span>
+  </div>
 </header>
 
 <style>
   header {
+    background-color: #1b1b1b;
+
+    position: fixed;
+    width: 100%; /* Full width */
+    transition: top 0.5s;
+    top: 0px;
+    /* left: 0;
+    right: 0;
+    top: 0; */
+    z-index: 999;
+  }
+
+  .hidden {
+    top: -500px;
+  }
+
+  .header {
+    padding: 0.5em 0.9em;
+    justify-content: space-between;
+    display: flex;
     flex-grow: 1;
     color: #1b1b1b;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     text-align: center;
-    padding: 0.5em 0.9em;
-    background-color: #1b1b1b;
-    display: flex;
-    justify-content: space-between;
   }
   .logo {
     font-size: 2em;

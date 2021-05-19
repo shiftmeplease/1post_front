@@ -5,6 +5,7 @@
   const dispatch = createEventDispatcher();
   let element;
   let fired = false;
+  //TODO rmk to intersection observer
   function isInViewport(e) {
     if (fired) return;
     const rect = element.getBoundingClientRect();
@@ -22,6 +23,7 @@
   on:touchmove={isInViewport}
   on:wheel={isInViewport}
 />
+
 
 <div class="upd" bind:this={element}>
   <Post {post} />

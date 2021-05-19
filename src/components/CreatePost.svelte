@@ -6,6 +6,8 @@
   import { createEventDispatcher } from "svelte";
 
   import { host } from "../appConfig.js";
+
+  export let expanded = false;
   const dispatch = createEventDispatcher();
 
   //TODO better preview;  with styles;
@@ -41,7 +43,7 @@
   }
 </script>
 
-<div class="postInput">
+<div class="postInput" class:expanded>
   <textarea bind:value placeholder="Remember, be nice!" rows="5" />
   <div>
     {#if previewHtml}
@@ -56,6 +58,14 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    position: relative;
+    top: 3.5em;
+    /* top: 0px; */
+    transition: top 1s;
+    z-index: 998;
+  }
+  .expanded {
+    top: 0.5em;
   }
   .postInput > textarea {
     border: 0.1em solid #d1d1d1;

@@ -1,19 +1,19 @@
 import { writable } from "svelte/store";
 
 function createStore() {
-  const { subscribe, update, set } = writable(false);
+  const { subscribe, update, set } = writable({});
 
   return {
     subscribe,
-    switch: () => {
-      update((val) => {
-        return !val;
+    reset: () => {
+      set({});
+    },
+    setProp: (prop, value) => {
+      update((store) => {
+        store[prop] = value;
+        return store;
       });
     },
-    reset: () => {
-      set(false);
-    },
-    set,
   };
 }
 const scrollStore = createStore();
