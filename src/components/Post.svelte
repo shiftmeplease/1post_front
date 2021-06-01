@@ -1,60 +1,41 @@
 <script>
   // import { onMount } from "svelte";
-  import { slide } from "../utils/anim.js";
+  import { createSlide } from "../utils/anim.js";
+  import CountryImage from "../components/CountryImage.svelte";
+  import DateString from "../components/DateString.svelte";
+  import PostId from "../components/PostId.svelte";
 
   let autoHeight = false;
-  const slideObj = slide();
-  const { slideFn } = slideObj;
-  slideObj.loopBegin = () => {
-    autoHeight = false;
-  };
+  const slideFn = createSlide({
+    loopBegin: () => {
+      autoHeight = false;
+    },
+    loopComplete: () => {
+      autoHeight = true;
+    },
+  });
 
-  slideObj.loopComplete = () => {
-    autoHeight = true;
-  };
+  export let postInfo = {};
+  let { _id, value, country, date, animation = false } = postInfo;
 
-  export let post = {};
-  let {
-    _id,
-    value,
-    country = "AQ",
-    date = new Date(),
-    animation = false,
-    viewPost = false,
-  } = post;
-
-  country = country.toLowerCase();
   $: {
-    value = post.value;
-    if (!_id) date = new Date();
+    //Update on change value
+    if (value != postInfo.value) {
+      value = postInfo.value;
+      date = new Date();
+    }
   }
 </script>
 
-<div
-  class:animation
-  class:viewPost
-  transition:slideFn={animation}
-  class:autoHeight
->
+<div class:animation transition:slideFn={animation} class:autoHeight>
   <div class="post">
     <div class="desc">
       <div>
-        {#if _id}<a class="idHref" href="/#">#{_id}</a>
-        {:else}
-          <span class="idHref" href="/#">#???</span>
-        {/if}
-        <span class="date"
-          >{new Date(date)
-            .toUTCString()
-            .split(",")[1]
-            .replace(" GMT", "")}</span
-        >
+        <PostId {_id} />
+        <DateString {date} />
         {#if country}
-          <img
-            class="flag"
-            src={`https://www.countryflags.io/${country}/flat/32.png`}
-            alt={country}
-          />{/if}
+          <CountryImage {country} />
+        {/if}
       </div>
     </div>
     <div class="postBody">{@html value}</div>
@@ -91,24 +72,12 @@
     /* max-height: 0px; */
     z-index: -999;
   }
-  /* .viewPost {
-    /* overflow: auto; 
-  }*/
 
   .autoHeight {
     height: auto !important;
     overflow: auto;
   }
-  .flag {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-    padding: 0;
-    margin: 0;
-    flex-grow: 0;
-    width: 32px;
-    height: 32px;
-  }
+
   .post:hover {
     background-color: #eeeeee;
   }

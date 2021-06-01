@@ -1,8 +1,12 @@
 import anime from "animejs";
 
-export function slide() {
-  const self = {};
-  self.slideFn = (node, props) => {
+export function createSlide(props) {
+  let animationObj = {};
+  if (props) {
+    const { loopBegin, loopComplete } = props;
+    animationObj = { ...animationObj, loopBegin, loopComplete };
+  }
+  animationObj.transition = (node, props) => {
     if (!props) return;
     const { duration, delay } = props;
     const style = getComputedStyle(node);
@@ -33,10 +37,10 @@ export function slide() {
       //   duration: 250,
       // },
       loopBegin: () => {
-        self.loopBegin && self.loopBegin();
+        animationObj.loopBegin && animationObj.loopBegin();
       },
       loopComplete: () => {
-        self.loopComplete && self.loopComplete();
+        animationObj.loopComplete && animationObj.loopComplete();
       },
       // "max-height": "100%",
       // scale: [0, 1],
@@ -51,7 +55,7 @@ export function slide() {
       },
     };
   };
-  return self;
+  return animationObj.transition;
 }
 
 // function reverse(node, { animated, duration }) {

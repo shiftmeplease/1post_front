@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import Post from "./Post.svelte";
-  export let post = {};
+  export let postInfo = {};
   const dispatch = createEventDispatcher();
   let element;
   let fired = false;
@@ -24,9 +24,8 @@
   on:wheel={isInViewport}
 />
 
-
 <div class="upd" bind:this={element}>
-  <Post {post} />
+  <Post {postInfo} />
 </div>
 
 <style>
