@@ -24,13 +24,6 @@
   on:wheel={isInViewport}
 />
 
-<div class="upd" bind:this={element}>
+<div bind:this={element}>
   <Post {postInfo} />
 </div>
-
-<style>
-  .upd {
-    background-color: antiquewhite;
-    /* color: rgb(255, 218, 170); */
-  }
-</style>

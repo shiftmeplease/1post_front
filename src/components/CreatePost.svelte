@@ -1,18 +1,18 @@
 <script>
   import Post from "./Post.svelte";
   import { mdrender } from "../utils/md.js";
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
+  import mockMessage from "../utils/mockMessage.js";
 
   import { host } from "../appConfig.js";
 
-  export let squeezed = false;
   const dispatch = createEventDispatcher();
 
   //TODO better preview;  with styles;
   //TODO image sizing, overflow..
   //TODO image full size on click
 
-  let previewPost = { animation: { duration: 500 } };
+  let previewPost = { animation: { duration: 500 }, preview: true };
   let value = "";
   let previewHtml = "";
   let initiated = false;
@@ -38,9 +38,13 @@
       value = "";
     }
   }
+
+  onMount(() => {
+    value = mockMessage;
+  });
 </script>
 
-<div class="postInput" class:squeezed>
+<div class="postInput break">
   <textarea bind:value placeholder="Remember, be nice!" rows="5" />
   <div>
     {#if previewHtml}
@@ -50,25 +54,36 @@
   <button on:click={handleClick}>POST</button>
 </div>
 
-<style>
+<style lang="scss">
+  @import "../styles/colors.scss";
+  @import "../styles/mixins.scss";
   .postInput {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* position: relative; */
-    /* top: 3.5em; */
-    /* top: 0px; */
-    margin-top: 3.5em;
     transition: margin-top 0.3s;
     z-index: 998;
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin: auto;
+
+    @include smallScreen {
+      margin: 0 2em;
+    }
+
+    > textarea {
+      padding: 1em;
+      @include border;
+    }
+    button {
+      // max-width: 1000px;
+      box-sizing: border-box;
+      padding: 1em;
+      border: 0.1em solid $postButtonBorder;
+      margin-bottom: 1em;
+    }
   }
-  .squeezed {
-    margin-top: 0.5em;
-  }
-  .postInput > textarea {
-    border: 0.1em solid #d1d1d1;
-    padding: 1em;
-    outline: none;
-    margin: 0.1em 1em;
+  .break {
+    margin-top: 3.5em !important;
   }
 </style>

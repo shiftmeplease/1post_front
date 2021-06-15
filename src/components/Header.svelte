@@ -1,7 +1,6 @@
 <script>
   import { scrollStore } from "../stores/scroll.js";
   import { onDestroy } from "svelte";
-  import CreatePost from "./CreatePost.svelte";
 
   let hidden = false;
 
@@ -22,10 +21,11 @@
   </div>
 </header>
 
-<style>
-  header {
-    background-color: #1b1b1b;
+<style lang="scss">
+  @import "../styles/colors";
 
+  header {
+    background-color: $headerBgColor;
     position: fixed;
     width: 100%; /* Full width */
     transition: top 0.5s;
@@ -45,22 +45,24 @@
     justify-content: space-between;
     display: flex;
     flex-grow: 1;
-    color: #1b1b1b;
+
     align-items: center;
     /* justify-content: center; */
     text-align: center;
+    max-width: 1000px;
+    margin: auto;
   }
   .logo {
     font-size: 2em;
     font-family: "Titillium Web Semibold", sans-serif;
     text-decoration: none;
-    color: #ebebeb;
+    color: $textColor;
     line-height: 0.9em;
   }
 
   .description {
     font-size: 1.3em;
-    color: #a8a8a8;
+    color: $textColor;
     font-family: "Titillium Web", sans-serif;
     overflow-wrap: break-word;
     max-width: 7em;

@@ -8,9 +8,10 @@
   #{_id}
 </a>
 
-<style>
+<style lang="scss">
+  @import "../styles/colors";
   .postId {
     text-decoration: none;
-    color: rgb(83, 83, 83);
+    color: $idColor;
   }
 </style>

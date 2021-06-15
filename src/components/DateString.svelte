@@ -1,7 +1,12 @@
+<script context="module">
+  const offsetMs = new Date().getTimezoneOffset() * 60000;
+</script>
+
 <script>
-  export let date = new Date();
+  export let date;
+  $: date = new Date(Date.parse(date) - offsetMs);
 </script>
 
 <span class="date">
-  {new Date(date).toUTCString().split(",")[1].replace(" GMT", "")}
+  {date.toUTCString().split(",")[1].replace(" GMT", "")}
 </span>

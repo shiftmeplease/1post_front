@@ -9,15 +9,20 @@
   alt={country}
 />
 
-<style>
+<style lang="scss">
   .flag {
+    filter: saturate(50%);
     max-width: 100%;
-    height: auto;
     vertical-align: middle;
-    padding: 0;
-    margin: 0;
-    flex-grow: 0;
+    // height: auto;
+    // padding: 0;
+    // margin: 0;
+    // flex-grow: 0;
     width: 32px;
     height: 32px;
+    transition: filter 0.1s ease-in-out;
+  }
+  .flag:hover {
+    filter: saturate(100%);
   }
 </style>

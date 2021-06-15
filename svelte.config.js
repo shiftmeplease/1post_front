@@ -1,4 +1,7 @@
 import node from "@sveltejs/adapter-node";
+import preprocess from "svelte-preprocess";
+import autoprefixer from "autoprefixer";
+
 // const pkg = require("./package.json");
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -20,4 +23,11 @@ export default {
       },
     },
   },
+  preprocess: preprocess({
+    scss: true,
+    postcss: {
+      //TODO do not work
+      plugins: [autoprefixer],
+    },
+  }),
 };

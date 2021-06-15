@@ -5,14 +5,14 @@
   import { scrollStore } from "../stores/scroll.js";
   import { postsStore } from "../stores/posts.js";
 
-  let squeezed = false;
-  const unsub = scrollStore.subscribe(({ state }) => {
-    squeezed = state === "down" ? true : false;
-  });
+  // let squeezed = false;
+  // const unsub = scrollStore.subscribe(({ state }) => {
+  //   squeezed = state === "down" ? true : false;
+  // });
 
-  onDestroy(() => {
-    unsub();
-  });
+  // onDestroy(() => {
+  //   unsub();
+  // });
 </script>
 
 <svelte:head>
@@ -26,7 +26,6 @@
   <div>posts</div> -->
   <!-- If touch, then postList should be loaded earlier, triggernum bigger -->
   <CreatePost
-    {squeezed}
     on:postCreated={({ detail: post }) => {
       postsStore.add(post);
       scrollStore.setProp("scrollToTop", true);

@@ -85,7 +85,7 @@
 >
   {#each posts as postInfo, i (postInfo._id)}
     {#if pageSize - (i % 10) !== triggerNum}
-      <Post {postInfo} />
+      <Post {postInfo} rounded={i === 0} />
     {:else}
       <TriggerPost {postInfo} on:inViewport|once={fetchTrigger} />
     {/if}
@@ -95,11 +95,20 @@
   {/if}
 </div>
 
-<style>
+<style lang="scss">
+  @import "../styles/mixins";
   .list {
     overflow: auto;
     /* max-height: 100vh; */
     /* position: relative; */
     /* top: -11em; */
+    @include smallScreen {
+      margin: 0 2em;
+    }
+
+    max-width: 1000px;
+    margin: auto;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
 </style>
