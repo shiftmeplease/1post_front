@@ -85,7 +85,7 @@
 >
   {#each posts as postInfo, i (postInfo._id)}
     {#if pageSize - (i % 10) !== triggerNum}
-      <Post {postInfo} rounded={i === 0} />
+      <Post {postInfo} />
     {:else}
       <TriggerPost {postInfo} on:inViewport|once={fetchTrigger} />
     {/if}
@@ -105,6 +105,7 @@
     @include smallScreen {
       margin: 0 2em;
     }
+    @include border;
 
     max-width: 1000px;
     margin: auto;
