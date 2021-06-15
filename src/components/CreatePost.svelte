@@ -56,6 +56,7 @@
 
 <style lang="scss">
   @import "../styles/colors.scss";
+  @import "../styles/mixins.scss";
 
   .postInput {
     display: flex;
