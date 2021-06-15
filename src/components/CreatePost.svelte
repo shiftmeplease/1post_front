@@ -56,7 +56,7 @@
 
 <style lang="scss">
   @import "../styles/colors.scss";
-  @import "../styles/mixins.scss";
+
   .postInput {
     display: flex;
     flex-direction: column;
@@ -67,10 +67,6 @@
     max-width: 1000px;
     margin: auto;
     @include border;
-
-    @include smallScreen {
-      margin: 0 2em;
-    }
 
     > textarea {
       padding: 1em;
