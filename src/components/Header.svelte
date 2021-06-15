@@ -5,7 +5,8 @@
   let hidden = false;
 
   const unsub = scrollStore.subscribe(({ state }) => {
-    hidden = state === "down" ? true : false;
+    // hidden = state === "down" ? true : false;
+    //TODO disabled scroll
   });
 
   onDestroy(() => {
@@ -27,12 +28,8 @@
   header {
     background-color: $headerBgColor;
     position: fixed;
-    width: 100%; /* Full width */
+    width: 100%;
     transition: top 0.5s;
-    top: 0px;
-    /* left: 0;
-    right: 0;
-    top: 0; */
     z-index: 999;
   }
 
