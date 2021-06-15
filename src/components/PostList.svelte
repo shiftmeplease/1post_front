@@ -102,9 +102,7 @@
     /* max-height: 100vh; */
     /* position: relative; */
     /* top: -11em; */
-    @include smallScreen {
-      margin: 0 2em;
-    }
+
     @include border;
 
     max-width: 1000px;

@@ -35,3 +35,11 @@
 </main>
 
 <!-- TODO https://preview.npmjs.com/package/marked -->
+<style lang="scss">
+  @import "../styles/mixins.scss";
+  main {
+    @include smallScreen {
+      margin: 0 10px;
+    }
+  }
+</style>
