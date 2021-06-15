@@ -30,7 +30,6 @@
   function imageClick(node) {
     const images = node.querySelectorAll(".postBody img");
     if (images.length === 0) return;
-    console.log(images);
     for (let image of images) {
       let maxed = false;
       image.addEventListener("click", (ev) => {
@@ -71,7 +70,7 @@
   @import "../styles/mixins.scss";
 
   .borderStyle {
-    @include border;
+    @include borderBottom();
   }
   .post {
     flex-grow: 1;

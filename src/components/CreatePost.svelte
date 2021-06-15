@@ -66,6 +66,7 @@
     box-sizing: border-box;
     max-width: 1000px;
     margin: auto;
+    @include border;
 
     @include smallScreen {
       margin: 0 2em;
@@ -73,17 +74,18 @@
 
     > textarea {
       padding: 1em;
-      @include border;
+      @include borderBottom;
+      resize: vertical;
     }
     button {
       // max-width: 1000px;
       box-sizing: border-box;
       padding: 1em;
-      border: 0.1em solid $postButtonBorder;
-      margin-bottom: 1em;
+      border: 0;
     }
   }
   .break {
     margin-top: 3.5em !important;
+    margin-bottom: 1em;
   }
 </style>

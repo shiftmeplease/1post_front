@@ -60,6 +60,10 @@ $breakpoints: (
 @mixin border {
     border: 1px solid $borderColor;
 }
+@mixin borderBottom {
+    border: 0;
+    border-bottom: 1px solid $borderColor;
+}
 
 @mixin smallScreen {
     @media screen and (max-width: 1050px) {

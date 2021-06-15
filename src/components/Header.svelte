@@ -30,6 +30,7 @@
     position: fixed;
     width: 100%;
     transition: top 0.5s;
+    top: 0px;
     z-index: 999;
   }
 
