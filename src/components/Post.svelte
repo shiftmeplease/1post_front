@@ -4,6 +4,7 @@
   import CountryImage from "../components/CountryImage.svelte";
   import DateString from "../components/DateString.svelte";
   import PostId from "../components/PostId.svelte";
+  import { afterUpdate, onMount, space } from "svelte/internal";
 
   let autoHeight = false;
   const slideFn = createSlide({
@@ -16,7 +17,10 @@
   });
 
   export let postInfo = {};
-  let { _id, value, country, date, animation = false } = postInfo;
+  let { _id, value, country, date, animation = false, md } = postInfo;
+  let additionalInfo;
+
+  let Element;
 
   if (!date) date = new Date();
 
@@ -24,9 +28,14 @@
     //Update on change value
     if (value != postInfo.value) {
       value = postInfo.value;
+      md = postInfo.md;
       date = new Date();
+      additionalInfo = `| ${md.length} symbols | ${
+        md.split(/\n/g).length
+      } lines`;
     }
   }
+
   function imageClick(node) {
     const images = node.querySelectorAll(".postBody img");
     if (images.length === 0) return;
@@ -42,6 +51,20 @@
       });
     }
   }
+
+  function linksProcessor(node) {
+    const links = node.querySelectorAll(".postBody a");
+    if (links.length === 0) return;
+    for (let link of links) {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  }
+
+  afterUpdate(() => {
+    linksProcessor(Element);
+    imageClick(Element);
+  });
 </script>
 
 <div
@@ -49,7 +72,7 @@
   class:animation
   transition:slideFn={animation}
   class:autoHeight
-  use:imageClick
+  bind:this={Element}
 >
   <div class="post">
     <div class="desc">
@@ -58,6 +81,9 @@
         <DateString {date} />
         {#if country}
           <CountryImage {country} />
+        {/if}
+        {#if additionalInfo}
+          <span> {additionalInfo} </span>
         {/if}
       </div>
     </div>
@@ -80,7 +106,13 @@
     /* TODO make '...' to view post */
     overflow: hidden;
     padding: 1em;
-    background-color: $postBgColor;
+    // background-color: $postBgColor;
+    background: linear-gradient(
+      90deg,
+      $postBgColor 10%,
+      $postBgColorHover 100%
+    );
+    transition: all 0.3s ease-in-out;
   }
 
   .animation {
@@ -94,13 +126,17 @@
   }
 
   .post:hover {
-    background-color: $postBgColorHover;
+    background: linear-gradient(
+      90deg,
+      $postBgColorHover 10%,
+      $postBgColorHover 100%
+    );
   }
   .postBody {
     font-size: 1.2em;
     min-height: 2em;
     overflow-wrap: break-word;
-    padding: 0 1em 0.5em 1em;
+    padding: 0 1em;
   }
   .desc {
     display: flex;
