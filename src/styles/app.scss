@@ -37,11 +37,56 @@ li {
 }
 
 .postBody {
+  font-family: Helvetica, sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $accentColor;
+    font-size: 1.5em;
+    margin: 0.5em 0;
+  }
+  code {
+    font-family: inherit;
+    letter-spacing: 2px;
+    font-weight: lighter;
+  }
+
+  a {
+    color: $linkColor;
+    text-decoration-color: $accentColor;
+    transition: color 0.1s ease-in;
+    transition: text-shadow 0.1s ease-in;
+    transition: background-color 0.1s ease-in;
+
+    &:visited {
+      color: $linkColorVisited;
+    }
+
+    &:hover {
+      color: $linkColorHover;
+      background-color: rgba($bgColor, 30%);
+
+      // text-shadow: 0 0 2px $bgColor;
+    }
+  }
+
   img {
     box-sizing: border-box;
     max-width: 200px;
     max-height: 200px;
     transition: all 0.2s;
+  }
+
+  em {
+    font-style: normal;
+    font-weight: bold;
+    color: $accentColor;
+    text-shadow: 0 0 1px $bgColor, 0 0 1px $bgColor, 0 0 1px $bgColor, 0 0 1px $bgColor, 0 0 1px $bgColor,
+      0 0 1px $bgColor;
   }
 
   blockquote {

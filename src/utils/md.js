@@ -17,12 +17,12 @@ md.enable([
 md.enable([
   "blockquote", // >>>  // <blockquote>
   "heading", // # <h1 -h6>
-  //"code", //TODO check
-  //"reference", // ?
-  //"list",
-  //"table",
   //
   //Disabled
+  //"list",
+  //"table",
+  //"reference", // ?
+  //"code", //TODO check
   //"hr",
   //"fence", /// ``` js \n\n ```
   //lheading", //TODO check
@@ -33,17 +33,18 @@ md.enable([
 
 //inline
 md.enable([
-  //"link", //[link](<to> "stuff")  // <a> ?
-  // "newline", // ?
-  // "escape", // is needed?
-  //"backticks", // ` ``` // <code>
+  "link", //[link](<to> "stuff")  // <a> ?
+
+  "backticks", // ` ``` // <code>
   "strikethrough", // ~~ ff ~~ // <s>
-  //"emphasis", //*this* and _that_
-  // "image",
-  // "autolink",
-  "html_inline",
+  "emphasis", //*this* and _that_
+  "image", // /![Minion](https://octodex.github.com/images/minion.png)
+  "autolink",
+  // "html_inline",
   //Disabled
   //"entity",
+  // "newline", // ?
+  // "escape", // is needed?
   //
   // Enabled by default
   // "balance_pairs",
@@ -54,31 +55,3 @@ md.enable([
 export const mdrender = (value) => {
   return DOMPurify.sanitize(md.render(value));
 };
-
-// components: {
-
-//     core: {
-//       rules: [
-//         'normalize',
-//         'block',
-//         'inline'
-//       ]
-//     },
-
-//     block: {
-//       rules: [
-//         'paragraph'
-//       ]
-//     },
-
-//     inline: {
-//       rules: [
-//         'text'
-//       ],
-//       rules2: [
-//         'balance_pairs',
-//         'text_collapse'
-//       ]
-//     }
-//   }
-// };
