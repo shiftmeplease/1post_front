@@ -70,3 +70,8 @@ $breakpoints: (
         @content;
     }
 }
+
+@mixin maxContentWidth {
+    max-width: 700px;
+    margin: auto;
+}

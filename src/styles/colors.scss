@@ -2,8 +2,9 @@
 
 $mainColor: #40afff;
 $accentColor: adjust-hue($mainColor, 25deg);
+
 $bgColor: color.adjust($mainColor, $lightness: 90%);
-$borderColor: #000; //color.adjust($mainColor, $blackness: 20%);
+$borderColor: #000;
 $textColor: #002844;
 
 // Header
@@ -12,7 +13,11 @@ $headerBgColor: $accentColor;
 // Post
 $idColor: $accentColor;
 $postBgColor: $mainColor;
-$postBgColorHover: color.adjust($postBgColor, $lightness: 10%);
+$postBgColorHover: color.adjust($postBgColor, $lightness: 5%);
+
+$linkColor: adjust-hue($accentColor, 30deg);
+$linkColorVisited: color.adjust($linkColor, $blackness: 10%);
+$linkColorHover: adjust-hue($accentColor, 30deg);
 
 // CreatePost
 $postButtonBorder: $borderColor;
