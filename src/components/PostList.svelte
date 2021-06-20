@@ -62,6 +62,7 @@
 
   onMount(() => {
     fetchData();
+    //TODO preloader https://stackoverflow.com/questions/26064351/ui-content-loader-for-cards-like-fb
   });
 
   let fetchedAll = false;
@@ -104,9 +105,7 @@
     /* top: -11em; */
 
     @include border;
-
-    max-width: 1000px;
-    margin: auto;
+    @include maxContentWidth;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
   }

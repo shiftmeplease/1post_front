@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev --port 3001",
-    "dev:expose": "svelte-kit dev --host \"192.168.0.2\"",
+    "dev:expose": "svelte-kit dev --host \"192.168.0.3\"",
     "build": "svelte-kit build",
     "start": "svelte-kit preview",
     "lint": "eslint --ignore-path .gitignore ."
@@ -26,6 +26,7 @@
     "marked": "^2.0.3",
     "postcss": "^8.3.2",
     "svelte-loading-spinners": "^0.1.4",
+    "svelte-notifications": "^0.9.91",
     "svelte-scrollto": "^0.2.0"
   }
 }

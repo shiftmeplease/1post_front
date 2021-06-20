@@ -18,7 +18,7 @@ export default {
 
     vite: {
       ssr: {
-        external: ["markdown-it", "animejs"],
+        external: ["markdown-it", "animejs", "svelte-notifications"],
         // noExternal: Object.keys(pkg.dependencies || {}),
       },
     },

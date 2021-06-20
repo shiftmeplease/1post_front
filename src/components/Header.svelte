@@ -24,13 +24,21 @@
 
 <style lang="scss">
   @import "../styles/colors";
+  @import "../styles/mixins";
 
   header {
-    background-color: $headerBgColor;
+    background: linear-gradient(90deg, $headerBgColor 0%, $mainColor 90%);
+
+    // @include smallScreen {
+    //   background: none;
+    //   background-color: $accentColor;
+    // }
+
     position: fixed;
     width: 100%;
     transition: top 0.5s;
     top: 0px;
+    left: 0px;
     z-index: 999;
   }
 
@@ -47,9 +55,9 @@
     align-items: center;
     /* justify-content: center; */
     text-align: center;
-    max-width: 1000px;
-    margin: auto;
+    @include maxContentWidth;
   }
+
   .logo {
     font-size: 2em;
     font-family: "Titillium Web Semibold", sans-serif;
