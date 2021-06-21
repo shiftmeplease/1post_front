@@ -57,10 +57,13 @@ li {
 
   a {
     color: $linkColor;
-    text-decoration-color: $accentColor;
+    // text-decoration-color: $accentColor;
+    text-decoration: none;
     transition: color 0.1s ease-in;
     transition: text-shadow 0.1s ease-in;
     transition: background-color 0.1s ease-in;
+    font-weight: 300;
+    padding: 0 0.1em;
 
     &:visited {
       color: $linkColorVisited;
@@ -71,6 +74,9 @@ li {
       background-color: rgba($bgColor, 30%);
 
       // text-shadow: 0 0 2px $bgColor;
+    }
+    svg {
+      margin-left: 0.3em;
     }
   }
 

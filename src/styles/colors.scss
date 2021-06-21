@@ -16,7 +16,7 @@ $postBgColor: $mainColor;
 $postBgColorHover: color.adjust($postBgColor, $lightness: 5%);
 
 $linkColor: adjust-hue($accentColor, 30deg);
-$linkColorVisited: color.adjust($linkColor, $blackness: 10%);
+$linkColorVisited: color.adjust($linkColor, $saturation: -50%);
 $linkColorHover: adjust-hue($accentColor, 30deg);
 
 // CreatePost
