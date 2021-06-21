@@ -34,7 +34,7 @@
       body: JSON.stringify({ value }),
       headers: { "Content-Type": "application/json" },
     });
-
+    // TODO throttle
     const { success, post, message } = await response.json();
     if (success) {
       dispatch("postCreated", { ...post, animation: { duration: 500 } });

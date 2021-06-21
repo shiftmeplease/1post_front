@@ -68,7 +68,6 @@
   let fetchedAll = false;
 
   const fetchTrigger = () => {
-    console.log(prevLength, pageSize, prevLength <= pageSize);
     if (prevLength === pageSize) {
       page++;
       fetchData();
