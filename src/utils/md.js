@@ -44,7 +44,7 @@ md.enable([
   //Disabled
   //"entity",
   // "newline", // ?
-  // "escape", // is needed?
+  "escape", // is needed?
   //
   // Enabled by default
   // "balance_pairs",
