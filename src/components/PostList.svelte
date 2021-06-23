@@ -8,7 +8,6 @@
   import { host } from "../appConfig.js";
 
   import * as animateScroll from "svelte-scrollto";
-  animateScroll.setGlobalOptions({ container: ".list" });
 
   export let pageSize = 0;
   export let triggerNum = 5;
@@ -61,6 +60,7 @@
   }
 
   onMount(() => {
+    animateScroll.setGlobalOptions({ container: ".list" });
     fetchData();
     //TODO preloader https://stackoverflow.com/questions/26064351/ui-content-loader-for-cards-like-fb
   });

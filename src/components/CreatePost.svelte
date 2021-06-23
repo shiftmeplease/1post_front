@@ -4,8 +4,8 @@
   import { createEventDispatcher, onMount } from "svelte";
   import mockMessage from "../utils/mockMessage.js";
 
-  import { getNotificationsContext } from "svelte-notifications";
-  const { addNotification } = getNotificationsContext();
+  // import { getNotificationsContext } from "svelte-notifications";
+  // const { addNotification } = getNotificationsContext();
 
   import { host } from "../appConfig.js";
 
@@ -40,10 +40,10 @@
       dispatch("postCreated", { ...post, animation: { duration: 500 } });
       value = "";
     } else {
-      addNotification({
-        text: message,
-        position: "bottom-right",
-      });
+      // addNotification({
+      //   text: message,
+      //   position: "bottom-right",
+      // });
     }
   }
 
